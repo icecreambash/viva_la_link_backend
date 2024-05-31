@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands\Import;
 
+use App\Services\BatchBridge\BatchBridgeInterface;
 use Illuminate\Console\Command;
 
 class AirCommand extends Command
@@ -23,8 +24,8 @@ class AirCommand extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(BatchBridgeInterface $batchBridge)
     {
-        dd(123123);
+        $batchBridge->batch();
     }
 }

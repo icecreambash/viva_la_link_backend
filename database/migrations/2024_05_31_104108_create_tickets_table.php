@@ -16,14 +16,15 @@ return new class extends Migration
             $table->foreignUuid('airline_id');
             $table->string('code');
             $table->dateTime('flight_time');
+            $table->dateTime('start_time');
             $table->foreignUuid('start_city_id');
             $table->foreignUuid('end_city_id');
             $table->integer('count_step');
-            $table->foreignUuid('city_id');
+            $table->foreignUuid('country_id');
             $table->foreignUuid('category_id');
             $table->dateTime('start_fly');
             $table->dateTime('end_fly');
-            $table->bigInteger('price');
+            $table->decimal('price',64,2);
             $table->boolean('is_reserved')->default(false);
             $table->timestamps();
             $table->softDeletes();

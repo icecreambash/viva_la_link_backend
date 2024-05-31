@@ -19,10 +19,11 @@ class Ticket extends Model
         'start_city_id',
         'end_city_id',
         'count_step',
-        'city_id',
+        'country_id',
         'price',
         'is_reserved',
         'category_id',
+        'start_time',
         'start_fly',
         'end_fly'
     ];
@@ -32,5 +33,6 @@ class Ticket extends Model
         'is_reserved' => 'boolean',
         'start_fly' => 'datetime',
         'end_fly' => 'datetime',
+        'start_time' => 'datetime',
     ];
 }
