@@ -6,16 +6,17 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class City extends Model
+class Favorite extends Model
 {
     use HasFactory, HasUuids;
 
-    protected $table = 'cities';
 
-    public $timestamps = false;
+    public $timestamps = true;
+
+    protected $table = 'favorites';
 
     protected $fillable = [
-        'title',
-        'slug',
+        'user_id',
+        'ticket_id',
     ];
 }

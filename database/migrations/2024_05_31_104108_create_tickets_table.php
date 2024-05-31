@@ -20,6 +20,9 @@ return new class extends Migration
             $table->foreignUuid('end_city_id');
             $table->integer('count_step');
             $table->foreignUuid('city_id');
+            $table->foreignUuid('category_id');
+            $table->dateTime('start_fly');
+            $table->dateTime('end_fly');
             $table->bigInteger('price');
             $table->boolean('is_reserved')->default(false);
             $table->timestamps();
