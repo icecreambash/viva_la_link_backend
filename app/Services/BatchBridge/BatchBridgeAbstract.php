@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\File;
 use Maatwebsite\Excel\Facades\Excel;
 
 
-
 abstract class BatchBridgeAbstract implements BatchBridgeInterface
 {
 
@@ -22,8 +21,7 @@ abstract class BatchBridgeAbstract implements BatchBridgeInterface
         string $customBasePath = null,
     )
     {
-        if(is_null($customBasePath))
-        {
+        if (is_null($customBasePath)) {
             $this->basePath = base_path() . '/batches';
         } else {
             $this->basePath = $customBasePath;
@@ -39,8 +37,8 @@ abstract class BatchBridgeAbstract implements BatchBridgeInterface
     {
         $firstItem = $this->filesCollection->first();
 
-        throw_if(!$firstItem instanceof \SplFileInfo,new \Exception('Collection file not SplFileInfo'));
+        throw_if(!$firstItem instanceof \SplFileInfo, new \Exception('Collection file not SplFileInfo'));
 
-        $importCollection = Excel::import(new PipelineTicketsImport(),$firstItem);
+        $importCollection = Excel::import(new PipelineTicketsImport(), $firstItem);
     }
 }
