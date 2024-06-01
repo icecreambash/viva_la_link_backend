@@ -29,7 +29,7 @@ class Ticket extends Model
     ];
 
     protected $casts = [
-        'flight_time' => 'datetime:H:M',
+        'flight_time' => 'datetime:H:i',
         'is_reserved' => 'boolean',
         'start_fly' => 'datetime',
         'end_fly' => 'datetime',

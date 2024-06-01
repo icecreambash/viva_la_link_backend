@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('favorites', function (Blueprint $table) {
+        Schema::create('histories', function (Blueprint $table) {
             $table->uuid('id');
             $table->foreignUuid('user_id');
-            $table->morphs('favoriteable');
+            $table->dateTime('time_search');
+            $table->foreignUuid('airline_id')->nullable();
+            $table->foreignUuid('from_city_id');
+            $table->foreignUuid('to_city_id');
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('favorites');
+        Schema::dropIfExists('histories');
     }
 };

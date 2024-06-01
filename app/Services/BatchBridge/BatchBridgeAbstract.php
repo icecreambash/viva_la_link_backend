@@ -37,6 +37,7 @@ abstract class BatchBridgeAbstract implements BatchBridgeInterface
     {
         $firstItem = $this->filesCollection->first();
 
+
         throw_if(!$firstItem instanceof \SplFileInfo, new \Exception('Collection file not SplFileInfo'));
 
         $importCollection = Excel::import(new PipelineTicketsImport(), $firstItem);
