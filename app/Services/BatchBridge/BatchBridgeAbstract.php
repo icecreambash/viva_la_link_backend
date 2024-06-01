@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 namespace App\Services\BatchBridge;
 
@@ -24,7 +24,7 @@ abstract class BatchBridgeAbstract implements BatchBridgeInterface
     {
         if(is_null($customBasePath))
         {
-            $this->basePath = base_path() . '\batches';
+            $this->basePath = base_path() . '/batches';
         } else {
             $this->basePath = $customBasePath;
         }
