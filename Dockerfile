@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Устанавливаем расширения PHP
-RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl
+RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl pdo_pgsql
 
 # Загружаем актуальную версию Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -40,6 +40,10 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 # Копируем содержимое текущего каталога в рабочую директорию
 COPY ./ /var/www
 COPY --chown=www:www ./ /var/www
+
+RUN chown -R www-data:www-data /var/www
+
+RUN chown -R 775 /var/www/storage/
 
 # Меняем пользователя на www
 USER www

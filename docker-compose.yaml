@@ -1,4 +1,4 @@
-version: '3'
+﻿version: '3'
 
 services:
 
@@ -24,13 +24,24 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "80:80"
-      - "443:443"
+      - "4000:80"
     volumes:
       - ./:/var/www
       - ./_docker/nginx/conf.d:/etc/nginx/conf.d
     networks:
       - app-network
+
+  nginx_proxy:
+    image: 'dockerhub.timeweb.cloud/jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+
 
 # Docker Networks
 networks:
