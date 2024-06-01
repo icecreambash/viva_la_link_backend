@@ -1,22 +1,26 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\User\LoginUserRequest;
+use App\Http\Requests\User\PatchUserRequest;
 use App\Http\Requests\User\RegisterUserRequest;
 use App\Http\Resources\Users\UserResource;
-use App\Models\City;
 use App\Models\User;
-use Illuminate\Http\Request;
+use App\Services\User\SelfUserInterface;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ClosureValidationRule;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Http\JsonResponse as JResponse;
 
 class UserController extends Controller implements HasMiddleware
 {
 
-    public static function middleware() : array
+    public static function middleware(): array
     {
         return [
             new Middleware(
@@ -32,7 +36,7 @@ class UserController extends Controller implements HasMiddleware
     /**
      * @throws \Throwable
      */
-    public function login(LoginUserRequest $request)
+    public function login(LoginUserRequest $request): JResponse
     {
         $user = User::where('email', $request->email)->first();
 
@@ -47,12 +51,13 @@ class UserController extends Controller implements HasMiddleware
             [
                 'message' => 'Login successfully',
                 '_token' => $user->createToken('*')->plainTextToken,
+                'user' => UserResource::make($user),
             ],
             201
         );
     }
 
-    public function register(RegisterUserRequest $request)
+    public function register(RegisterUserRequest $request): JResponse
     {
         $body = $request->only(
             [
@@ -74,15 +79,41 @@ class UserController extends Controller implements HasMiddleware
         return response()->json(
             [
                 'message' => 'Successfully created user!',
-                '_token' => $user->createToken('*')->plainTextToken
+                '_token' => $user->createToken('*')->plainTextToken,
+                'user' => UserResource::make($user),
             ],
             201
         );
     }
 
-    public function getMe(Request $request)
+    public function getMe(): UserResource
     {
         return UserResource::make(auth()->user());
+    }
+
+    /**
+     * @throws \Throwable
+     */
+    public function patchMe(PatchUserRequest $request, SelfUserInterface $selfUserService)
+    {
+        return response()->json(
+            [
+                'message' => 'Successfully updated user!',
+                'user' => UserResource::make(
+                    $selfUserService->updateProfile(
+                        user: auth()->user(),
+                        fields: $request->only(
+                            [
+                                'email',
+                                'name',
+                                'current_password',
+                                'password',
+                            ]
+                        ),
+                    )
+                )
+            ]
+        );
     }
 
 

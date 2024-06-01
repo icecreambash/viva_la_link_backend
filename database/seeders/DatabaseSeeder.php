@@ -17,5 +17,7 @@ class DatabaseSeeder extends Seeder
        $this->call(AirlineSeeder::class);
        $this->call(CountrySeeder::class);
        $this->call(CitySeeder::class);
+       $this->call(PermissionSeeder::class);
+       $this->call(UserAdminSeeder::class);
     }
 }

@@ -2,17 +2,17 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Ticket;
+use App\Models\User;
 use Illuminate\Console\Command;
 
-class TestCommand extends Command
+class ConductorAdminCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:test';
+    protected $signature = 'app:get-admin';
 
     /**
      * The console command description.
@@ -24,8 +24,10 @@ class TestCommand extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): int
     {
-        dd(Ticket::query()->count());
+        $this->info(User::role('admin')->first()?->createToken('*')?->plainTextToken);
+
+        return 0;
     }
 }

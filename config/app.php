@@ -54,6 +54,10 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+
+    'always_verify_users' => (bool) env('ALWAYS_VERIFY_USERS', false),
+
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
