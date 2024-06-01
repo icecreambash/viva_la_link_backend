@@ -1,3 +1,6 @@
 !.gitignore
 
 assets.xlsx
+
+!chain_train_development.xlsx
+!chain_train_production.protobaf
