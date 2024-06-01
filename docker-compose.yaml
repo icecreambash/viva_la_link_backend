@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+
+  # PHP Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app
+    tty: true
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./:/var/www
+    working_dir: /var/www
+    networks:
+      - app-network
+
+  # Nginx Service
+  webserver:
+    image: dockerhub.timeweb.cloud/nginx:alpine
+    container_name: webserver
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www
+      - ./_docker/nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      - app-network
+
+# Docker Networks
+networks:
+  app-network:
+    driver: bridge
