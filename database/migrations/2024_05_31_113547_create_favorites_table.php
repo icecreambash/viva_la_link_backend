@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('favorites', function (Blueprint $table) {
             $table->uuid('id');
             $table->foreignUuid('user_id');
-            $table->morphs('favoriteable');
+            $table->uuidMorphs('favoriteable');
             $table->timestamps();
         });
     }

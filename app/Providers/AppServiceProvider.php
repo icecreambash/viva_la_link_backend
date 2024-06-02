@@ -2,12 +2,18 @@
 
 namespace App\Providers;
 
+use App\Models\Airline;
+use App\Models\City;
+use App\Models\Country;
+use App\Models\Ticket;
 use App\Models\User;
 use App\Observers\UserObserver;
 use App\Services\BatchBridge\BatchBridge;
 use App\Services\BatchBridge\BatchBridgeInterface;
 use App\Services\User\SelfUserInterface;
 use App\Services\User\SelfUserService;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -40,5 +46,16 @@ class AppServiceProvider extends ServiceProvider
          */
 
         User::observe(UserObserver::class);
+
+
+        Relation::morphMap(
+            [
+                'Ticket' => Ticket::class,
+                'Airline' => Airline::class,
+                'Country' => Country::class,
+                'City' => City::class,
+                'User' => User::class,
+            ]
+        );
     }
 }

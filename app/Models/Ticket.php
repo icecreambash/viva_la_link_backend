@@ -34,5 +34,6 @@ class Ticket extends Model
         'start_fly' => 'datetime',
         'end_fly' => 'datetime',
         'start_time' => 'datetime',
+        'price' => 'float'
     ];
 }

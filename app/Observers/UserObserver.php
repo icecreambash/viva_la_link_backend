@@ -16,7 +16,7 @@ class UserObserver
             $user->assignRole('user');
         }
 
-        if(config('app.always_verify_users'))
+        if(config('app.always_verify_users') && !$user->hasVerifiedEmail())
         {
             $user->markEmailAsVerified();
         }
