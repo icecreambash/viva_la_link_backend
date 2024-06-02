@@ -7,7 +7,7 @@ namespace App\Services\User;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-abstract class SelfUserAbstractService implements SelfUserInterface
+abstract class SelfUserServiceAbstract implements SelfUserInterface
 {
     public function updateProfile(User $user, array $fields): User
     {
