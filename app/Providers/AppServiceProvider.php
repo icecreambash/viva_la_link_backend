@@ -10,6 +10,8 @@ use App\Models\User;
 use App\Observers\UserObserver;
 use App\Services\BatchBridge\BatchBridge;
 use App\Services\BatchBridge\BatchBridgeInterface;
+use App\Services\Favorite\FavoriteInterface;
+use App\Services\Favorite\FavoriteService;
 use App\Services\User\SelfUserInterface;
 use App\Services\User\SelfUserService;
 use Illuminate\Database\Eloquent\Model;
@@ -39,6 +41,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(BatchBridgeInterface::class,BatchBridge::class);
 
         $this->app->bind(SelfUserInterface::class,SelfUserService::class);
+
+        $this->app->bind(FavoriteInterface::class,FavoriteService::class);
 
 
         /**

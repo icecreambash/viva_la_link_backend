@@ -2,7 +2,9 @@
 
 namespace App\Services\Favorite;
 
-class FavoriteService
+use App\Models\User;
+
+class FavoriteService extends FavoriteServiceAbstract
 {
 
 }
