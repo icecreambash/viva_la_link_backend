@@ -23,7 +23,6 @@ class FavoriteItemResource extends JsonResource
             'id' => $this->id,
             'user_id' => $this->user_id,
             'favoriteable_type' => $this->favoriteable_type,
-            'favoriteable_id' => $this->favoriteable_id,
             'favoriteable' => $this->getInstanceResourceCollection(
                 value: $this->favoriteable,
                 model: $this->favoriteable_type

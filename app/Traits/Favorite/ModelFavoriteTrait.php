@@ -25,8 +25,7 @@ trait ModelFavoriteTrait
 
     private function getInstanceResourceCollection(object $value, string $model)
     {
-        $favoriteType = $this->favorites[$model];
-        $resourceType = $this->resourceFavorites[$favoriteType];
+        $resourceType = $this->resourceFavorites[$this->favorites[$model]];
         return $resourceType::make($value);
     }
 

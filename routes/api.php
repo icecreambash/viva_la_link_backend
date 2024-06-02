@@ -28,6 +28,7 @@ Route::group(['prefix'=>'tickets'],function (){
 
 Route::group(['prefix'=>'trips'],function (){
     Route::get('liquid-ways',[TripController::class,'getLiquidWays']);
+    Route::get('/',[TripController::class,'searchTickets']);
 });
 
 
