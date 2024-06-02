@@ -1,0 +1,520 @@
+{
+	"info": {
+		"_postman_id": "901287c2-b12b-4ff4-a92d-5b050086b8ea",
+		"name": "docks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14299269"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Kostylev Artem",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "kostylev.artjom@yandex.ru",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123123",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "123123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_path}}/user/register",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test@test.test",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_path}}/user/login",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|iBcMpQVuscNjACnglToMeZ4rjCQGOgXDHOKpnCzhf2a41147",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_path}}/user",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|3H5xxZpBfeugSL0t9cu6RykK4hWb1PGE7bWVYLZm5767fc8c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PATCH",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "qweqwe",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "qweqwe",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "test@test.test",
+									"type": "text"
+								},
+								{
+									"key": "current_password",
+									"value": "123123",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "wef",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_path}}/user",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Favotires",
+			"item": [
+				{
+					"name": "Get favorites list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|VRCtlqYiOxzX5xowOFurVbg2554y8GrL09etRdazdfa75372",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_path}}/favorites?model=Ticket",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"favorites"
+							],
+							"query": [
+								{
+									"key": "model",
+									"value": "Ticket"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Sync Favorites",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|VRCtlqYiOxzX5xowOFurVbg2554y8GrL09etRdazdfa75372",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "model_type",
+									"value": "Ticket3",
+									"type": "text"
+								},
+								{
+									"key": "model_ids[]",
+									"value": "9c2fe747-309c-43bd-8d55-aaf35df707f2",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "model_ids[]",
+									"value": "9c2fe747-313b-4ddf-af22-63b8c2e42b34",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_path}}/favorites",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"favorites"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HIstories",
+			"item": []
+		},
+		{
+			"name": "Airlines",
+			"item": [
+				{
+					"name": "Get Airlanes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_path}}/airlines",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"airlines"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get users list (Admin required)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8|UpMjItWCL7oL1pK76UQUNW95fN7OzV19jdGvPq6e2ac8f277",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_path}}/users?_per_page=5",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "_per_page",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tickets",
+			"item": [
+				{
+					"name": "Get list tickets",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "8|UpMjItWCL7oL1pK76UQUNW95fN7OzV19jdGvPq6e2ac8f277",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_path}}/tickets",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"tickets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get credentials for filter TIckets",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_path}}/tickets/filters",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"tickets",
+								"filters"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Trips",
+			"item": [
+				{
+					"name": "Get liquid ways",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_path}}/trips/liquid-ways",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"trips",
+								"liquid-ways"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search TIckets for Trip",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_path}}/trips/liquid-ways",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"trips",
+								"liquid-ways"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cities",
+			"item": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_path",
+			"value": "http://127.0.0.1:8000/api",
+			"type": "string"
+		}
+	]
+}
